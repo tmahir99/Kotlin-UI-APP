@@ -1,0 +1,32 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- New color palette -->
+    <color name="walnut_brown">#544b3dff</color>
+    <color name="hookers_green">#4e6e58ff</color>
+    <color name="viridian">#000</color>
+    <color name="tiffany_blue">#a6ece0ff</color>
+    <color name="aquamarine">#7adfbbff</color>
+
+    <!-- Lightened background color -->
+    <color name="light_gray">#A1CAF1</color>
+
+    <!-- Base application theme. -->
+    <style name="Theme.Commerc" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/viridian</item>
+        <item name="colorPrimaryVariant">@color/viridian</item>
+        <item name="colorOnPrimary">@color/dark_gray</item>
+
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/tiffany_blue</item>
+        <item name="colorSecondaryVariant">@color/hookers_green</item>
+        <item name="colorOnSecondary">@color/dark_gray</item>
+
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+
+        <!-- Lightened app background color. -->
+        <item name="android:windowBackground">@color/light_gray</item>
+
+        <!-- Customize your theme here. -->
+    </style>
+</resources>

@@ -1,0 +1,16 @@
+<resources>
+    <!-- Blue shades for a modern feel -->
+    <color name="blue_200">#FF64B5F6</color>
+    <color name="blue_500">#FF2196F3</color>
+    <color name="blue_700">#FF1565C0</color>
+
+    <!-- Green shades for contrast -->
+    <color name="green_200">#FF81C784</color>
+    <color name="green_700">#FF4CAF50</color>
+
+    <!-- Dark gray for improved visibility -->
+    <color name="dark_gray">#FF424242</color>
+
+    <!-- Keep white as it is -->
+    <color name="white">#FFFFFFFF</color>
+</resources>
