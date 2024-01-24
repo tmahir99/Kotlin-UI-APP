@@ -27,7 +27,7 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity> <!-- Add the following lines for ItemDetailsActivity -->
+        </activity>
         <activity
             android:name=".ItemDetailsActivity"
             android:label="Item Details"></activity>

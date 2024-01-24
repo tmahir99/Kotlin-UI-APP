@@ -21,7 +21,7 @@ class ShoppingCartActivity : AppCompatActivity() {
 
         val backButton: ImageView = findViewById(R.id.backButton)
         backButton.setOnClickListener {
-            finish() // Finish the activity when the back button is clicked
+            finish()
         }
 
         val cartItems = ShoppingCartManager.getCartItems()
@@ -29,12 +29,9 @@ class ShoppingCartActivity : AppCompatActivity() {
         val parentLayout: LinearLayout = findViewById(R.id.parentLayout)
         proceedToPaymentButton = findViewById(R.id.proceedToPaymentButton)
 
-        // Iterate through cart items and display them in your layout
         for (item in cartItems) {
-            // Inflate the layout for each item
             val itemLayout = layoutInflater.inflate(R.layout.item_layout, null)
 
-            // Find views in the layout and set their values based on the item data
             val titleTextView: TextView = itemLayout.findViewById(R.id.title)
             val priceTextView: TextView = itemLayout.findViewById(R.id.price)
             val descriptionTextView: TextView = itemLayout.findViewById(R.id.description)
@@ -47,17 +44,13 @@ class ShoppingCartActivity : AppCompatActivity() {
             descriptionTextView.text = item.description
             categoryTextView.text = "Category: ${item.category}"
             ratingTextView.text = "Rating: ${item.rating.rate} (${item.rating.count} reviews)"
-            // Load image using Glide
             Glide.with(imageView.context).load(item.image).into(imageView)
 
-            // Add the inflated layout to the parent layout
             parentLayout.addView(itemLayout)
         }
 
-        // Calculate the total sum of prices
         val totalSum = cartItems.sumByDouble { it.price }
 
-        // Update the text of the "Proceed to payment" button
         updateProceedToPaymentButtonText(totalSum)
     }
 
@@ -66,7 +59,6 @@ class ShoppingCartActivity : AppCompatActivity() {
         proceedToPaymentButton.text = buttonText
     }
 
-    // Add this extension function to format double as currency
     private fun Double.formatAsCurrency(): String {
         val currencyFormatter = NumberFormat.getCurrencyInstance()
         return currencyFormatter.format(this)

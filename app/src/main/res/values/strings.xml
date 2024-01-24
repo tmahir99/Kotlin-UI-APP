@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Online Store</string>
+    <string name="app_name">FakeStore</string>
     <string name="title_home">Categories</string>
     <string name="title_dashboard">Korpa</string>
     <string name="title_notifications">Notifications</string>

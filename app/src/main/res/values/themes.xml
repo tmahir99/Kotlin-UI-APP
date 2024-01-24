@@ -1,5 +1,4 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- New color palette -->
     <color name="walnut_brown">#544b3dff</color>
     <color name="hookers_green">#4e6e58ff</color>
     <color name="viridian">#000</color>
@@ -27,6 +26,5 @@
         <!-- Lightened app background color. -->
         <item name="android:windowBackground">@color/light_gray</item>
 
-        <!-- Customize your theme here. -->
     </style>
 </resources>

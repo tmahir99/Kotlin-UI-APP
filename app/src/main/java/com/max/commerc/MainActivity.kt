@@ -1,4 +1,3 @@
-// MainActivity.kt
 package com.max.commerc
 
 import android.content.Intent
@@ -39,20 +38,16 @@ class MainActivity : AppCompatActivity(), ShoppingCartManager.OnItemCountChangeL
             startActivity(Intent(this, ShoppingCartActivity::class.java))
         }
 
-        // Register MainActivity as a listener
         ShoppingCartManager.registerOnItemCountChangeListener(this)
     }
 
     override fun onDestroy() {
         super.onDestroy()
-        // Unregister MainActivity as a listener to avoid memory leaks
         ShoppingCartManager.unregisterOnItemCountChangeListener(this)
     }
 
-    // Implement the OnItemCountChangeListener interface
     override fun onItemCountChange(newCount: Int) {
         runOnUiThread {
-            // Update the TextView on the UI thread
             itemCountTextView.text = newCount.toString()
         }
     }

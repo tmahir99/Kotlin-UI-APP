@@ -6,9 +6,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Add a TextView for the centered app name -->
-    <!-- Inside ConstraintLayout in activity_main.xml -->
-    <!-- activity_main.xml -->
     <ImageView
         android:id="@+id/shoppingCartIcon"
         android:layout_width="44dp"
@@ -54,7 +51,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!-- Add RecyclerView with id "recyclerView" -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="0dp"

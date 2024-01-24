@@ -1,4 +1,3 @@
-// ItemAdapter.kt
 package com.max.commerc
 
 import android.content.Context
@@ -33,7 +32,6 @@ class ItemAdapter(private var items: List<ItemModel>) :
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = items[position]
 
-        // Populate data for the item
         holder.title.text = item.title
         holder.price.text = "Price: $${item.price}"
         holder.description.text = item.description
@@ -41,9 +39,7 @@ class ItemAdapter(private var items: List<ItemModel>) :
         Glide.with(holder.image.context).load(item.image).into(holder.image)
         holder.rating.text = "Rating: ${item.rating.rate} (${item.rating.count} reviews)"
 
-        // Set click listener for the item
         holder.itemView.setOnClickListener {
-            // Pass the selected item's ID to the new activity
             val intent = Intent(holder.itemView.context, ItemDetailsActivity::class.java)
             intent.putExtra("item_id", item.id)
             holder.itemView.context.startActivity(intent)

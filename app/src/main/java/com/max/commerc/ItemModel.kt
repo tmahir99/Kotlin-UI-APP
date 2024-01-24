@@ -1,5 +1,3 @@
-// ItemModel.kt
-
 package com.max.commerc
 
 data class ItemModel(

@@ -11,6 +11,5 @@
     <!-- Dark gray for improved visibility -->
     <color name="dark_gray">#FF424242</color>
 
-    <!-- Keep white as it is -->
     <color name="white">#FFFFFFFF</color>
 </resources>

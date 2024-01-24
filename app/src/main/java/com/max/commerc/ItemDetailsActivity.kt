@@ -1,4 +1,3 @@
-// ItemDetailsActivity.kt
 package com.max.commerc
 
 import android.os.AsyncTask
@@ -26,7 +25,7 @@ class ItemDetailsActivity : AppCompatActivity() {
     private lateinit var itemPrice: TextView
     private lateinit var itemRating: TextView
 
-    private var result: ItemModel? = null // Declare result at the class level
+    private var result: ItemModel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,7 +42,6 @@ class ItemDetailsActivity : AppCompatActivity() {
         itemPrice = findViewById(R.id.itemPrice)
         itemRating = findViewById(R.id.itemRating)
 
-        // Retrieve the selected item's ID from the Intent
         val itemId = intent.getIntExtra("item_id", -1)
 
         if (itemId != -1) {
@@ -75,17 +73,15 @@ class ItemDetailsActivity : AppCompatActivity() {
         override fun onPostExecute(result: ItemModel?) {
             super.onPostExecute(result)
             if (result != null) {
-                // Populate the UI with detailed item data
+
                 itemTitle.text = result.title
                 itemCategory.text = "Category: ${result.category}"
                 itemDescription.text = result.description
                 itemPrice.text = "Price: $${result.price}"
                 itemRating.text = "Rating: ${result.rating.rate} (${result.rating.count} reviews)"
 
-                // Load image using Glide
                 Glide.with(itemImage.context).load(result.image).into(itemImage)
 
-                // Assign the result to the class-level variable
                 this@ItemDetailsActivity.result = result
             }
         }
