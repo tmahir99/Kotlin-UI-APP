@@ -1,6 +1,7 @@
-//MainActivity.kt
+// MainActivity.kt
 package com.max.commerc
 
+import android.content.Intent
 import android.os.AsyncTask
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -11,12 +12,16 @@ import java.net.HttpURLConnection
 import java.net.URL
 
 import android.os.Bundle
+import android.view.View
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), ShoppingCartManager.OnItemCountChangeListener {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: ItemAdapter
+    private lateinit var itemCountTextView: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,7 +30,31 @@ class MainActivity : AppCompatActivity() {
         recyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
 
+        itemCountTextView = findViewById(R.id.itemCountTextView)
+
         FetchDataTask().execute("https://fakestoreapi.com/products")
+
+        val shoppingCartIcon: ImageView = findViewById(R.id.shoppingCartIcon)
+        shoppingCartIcon.setOnClickListener {
+            startActivity(Intent(this, ShoppingCartActivity::class.java))
+        }
+
+        // Register MainActivity as a listener
+        ShoppingCartManager.registerOnItemCountChangeListener(this)
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        // Unregister MainActivity as a listener to avoid memory leaks
+        ShoppingCartManager.unregisterOnItemCountChangeListener(this)
+    }
+
+    // Implement the OnItemCountChangeListener interface
+    override fun onItemCountChange(newCount: Int) {
+        runOnUiThread {
+            // Update the TextView on the UI thread
+            itemCountTextView.text = newCount.toString()
+        }
     }
 
     private inner class FetchDataTask : AsyncTask<String, Void, List<ItemModel>>() {

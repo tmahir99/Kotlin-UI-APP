@@ -26,6 +26,8 @@ class ItemDetailsActivity : AppCompatActivity() {
     private lateinit var itemPrice: TextView
     private lateinit var itemRating: TextView
 
+    private var result: ItemModel? = null // Declare result at the class level
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_item_details)
@@ -43,7 +45,6 @@ class ItemDetailsActivity : AppCompatActivity() {
 
         // Retrieve the selected item's ID from the Intent
         val itemId = intent.getIntExtra("item_id", -1)
-
 
         if (itemId != -1) {
             FetchItemDetailsTask().execute("https://fakestoreapi.com/products/$itemId")
@@ -83,11 +84,18 @@ class ItemDetailsActivity : AppCompatActivity() {
 
                 // Load image using Glide
                 Glide.with(itemImage.context).load(result.image).into(itemImage)
+
+                // Assign the result to the class-level variable
+                this@ItemDetailsActivity.result = result
             }
         }
     }
-    fun onBuyNowClick(view: View) {
-        Toast.makeText(this, "It will be delivered soon", Toast.LENGTH_SHORT).show()
-    }
 
+    fun onBuyNowClick(view: View) {
+        result?.let {
+            ShoppingCartManager.addToCart(it)
+            Toast.makeText(this, "Item added to cart", Toast.LENGTH_SHORT).show()
+        }
+    }
 }
+
